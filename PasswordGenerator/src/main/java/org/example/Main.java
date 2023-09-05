@@ -48,6 +48,7 @@ public class Main {
 
     public static void generateAndAnalyzePassword(int passwordLength) {
         String generatedPassword = generateRandomPassword(passwordLength);
+        System.out.println(generatedPassword);
 
         Map<Character, Integer> frequencyMap = new HashMap<>();
 
