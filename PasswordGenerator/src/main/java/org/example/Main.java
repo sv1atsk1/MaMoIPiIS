@@ -20,16 +20,16 @@ import javax.swing.*;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Введите желаемую длину пароля (строки) ");
+        System.out.println("Enter desired length (string)");
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             int int_from_reader = Integer.parseInt(reader.readLine());
             generateAndAnalyzePassword(int_from_reader);
             calculateAndPrintAverageTime(int_from_reader);
             plotAverageTimeGraph(int_from_reader);
         } catch (IOException e) {
-            System.out.println("Произошла ошибка ввода/вывода: " + e.getMessage());
+            System.out.println("An I/O error occurred: " + e.getMessage());
         } catch (NumberFormatException e) {
-            System.out.println("Ошибка преобразования числа: " + e.getMessage());
+            System.out.println("Number conversion error: " + e.getMessage());
         }
     }
 
@@ -71,7 +71,7 @@ public class Main {
 
         BigInteger averageTimeToCrackInHours = averageTimeToCrackInSeconds.divide(BigInteger.valueOf(3600));
 
-        System.out.println("Среднее время подбора пароля: " + averageTimeToCrackInHours + " часов");
+        System.out.println("Average password guess time: " + averageTimeToCrackInHours + " hours");
     }
 
     private static BigInteger calculateCombinations(int passwordLength) {
@@ -81,7 +81,7 @@ public class Main {
     }
 
     public static void plotAverageTimeGraph(int maxPasswordLength) {
-        XYSeries series = new XYSeries("Среднее время подбора пароля");
+        XYSeries series = new XYSeries("Average password guess time: ");
 
         for (int length = 1; length <= maxPasswordLength; length++) {
             BigInteger combinations = calculateCombinations(length);
@@ -92,8 +92,8 @@ public class Main {
 
         XYSeriesCollection dataset = new XYSeriesCollection(series);
         JFreeChart chart = ChartFactory.createXYLineChart(
-                "Зависимость среднего времени подбора пароля от его длины",
-                "Длина пароля", "Среднее время (часы)", dataset,
+                "Dependence of the average password guessing time on its length",
+                "Password length", "Mean Time (Hours)", dataset,
                 PlotOrientation.VERTICAL, true, true, false);
 
         XYPlot plot = chart.getXYPlot();
@@ -101,7 +101,7 @@ public class Main {
         renderer.setSeriesLinesVisible(0, true);
         plot.setRenderer(renderer);
 
-        JFrame frame = new JFrame("График");
+        JFrame frame = new JFrame("Graph");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add(new ChartPanel(chart));
         frame.pack();
