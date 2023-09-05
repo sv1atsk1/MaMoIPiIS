@@ -15,7 +15,6 @@
     </properties>
 
     <dependencies>
-        <!-- Другие зависимости -->
         <dependency>
             <groupId>org.jfree</groupId>
             <artifactId>jfreechart</artifactId>
