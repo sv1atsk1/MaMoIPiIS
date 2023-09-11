@@ -5,45 +5,44 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Выберите желаемую функцию: \nЩифр табличной маршрутной перестановки (без ключа) - 1\n" +
-                "Шифр вертикальной перестановки (с ключом) - 2\n" +
-                "Атака полным перебором ключа - 3\n");
+        System.out.println("Choose the desired function: \nTable Route Permutation Cipher (without a key) - 1\n" +
+                "Vertical Permutation Cipher (with a key) - 2\n" +
+                "Brute-force Key Attack - 3\n");
         String key_or_not = reader.readLine();
         String encryptedText2 = "";
         switch (key_or_not) {
             case "1":
-                System.out.println("Введите текст для шифрования:");
+                System.out.println("Enter the text to encrypt:");
                 String inputText = reader.readLine().replaceAll("\\s", "");
                 String encryptedText = encoderWithoutKey(inputText);
-                System.out.println("Зашифрованный текст: " + encryptedText);
+                System.out.println("Encrypted text: " + encryptedText);
                 break;
 
             case "2":
-                System.out.println("Введите текст для шифрования:");
+                System.out.println("Enter the text to encrypt:");
                 String inputText2 = reader.readLine().replaceAll("\\s", "");
-                System.out.println("Введите ключ для шифрования:");
+                System.out.println("Enter the encryption key:");
                 String[] keyInput = reader.readLine().split(" ");
                 int[] key = new int[keyInput.length];
                 for (int i = 0; i < keyInput.length; i++) {
                     key[i] = Integer.parseInt(keyInput[i]);
                 }
                 encryptedText2 = encoderWithKey(inputText2, key);
-                System.out.println("Зашифрованный текст: " + encryptedText2);
+                System.out.println("Encrypted text: " + encryptedText2);
                 break;
 
             case "3":
-                System.out.println("Введите зашифрованный текст:");
+                System.out.println("Enter the encrypted text:");
                 String encryptedTextToDecrypt = reader.readLine();
                 bruteForceAttack(encryptedTextToDecrypt);
                 break;
         }
     }
-    public static String encoderWithoutKey(String string_for_encoder)
-    {
+
+    public static String encoderWithoutKey(String string_for_encoder) {
         int rows = (int) Math.ceil((double) string_for_encoder.length() / 5);
 
         char[][] table = new char[rows][5];
@@ -57,18 +56,16 @@ public class Main {
                 } else {
                     table[i][j] = ' ';
                 }
-
             }
         }
 
-        System.out.println("\nТаблица:");
+        System.out.println("\nTable:");
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < 5; j++) {
                 System.out.print(table[i][j] + " ");
             }
             System.out.println();
         }
-
 
         StringBuilder encodedString = new StringBuilder();
         for (int j = 4; j >= 0; j--) {
@@ -100,7 +97,7 @@ public class Main {
             }
         }
 
-        System.out.println("\nТаблица:");
+        System.out.println("\nTable:");
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 System.out.print(table[i][j] + " ");
@@ -138,10 +135,10 @@ public class Main {
 
             do {
                 String decryptedText = decoderWithKey(encryptedChars, key);
-                System.out.println("Попытка с ключом " + Arrays.toString(key) + ": " + decryptedText);
+                System.out.println("Attempt with key " + Arrays.toString(key) + ": " + decryptedText);
             } while (nextPermutation(key));
         }
-        System.out.println("Атака завершена.");
+        System.out.println("Attack completed.");
     }
 
     public static int[] generateKey(int length) {
@@ -183,7 +180,6 @@ public class Main {
     }
 
     public static boolean nextPermutation(int[] array) {
-
         int i = array.length - 1;
         while (i > 0 && array[i - 1] >= array[i]) {
             i--;
