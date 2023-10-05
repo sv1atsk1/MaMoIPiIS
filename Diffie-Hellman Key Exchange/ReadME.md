@@ -7,5 +7,5 @@
  ## 4.Происходит обмен этими значениями между сторонами.
  ## 5.Вычисляются значения: Для первой стороны : B ^ a mod P и Для второй стороны: A ^ b mod P.
  ## 6.Происходит проверка на равенство этих значений.
-### Пример работы программы:
+ ## Пример работы программы:
 ![Пример работы программы](https://github.com/sv1atsk1/MaMoIPiIS/blob/main/Diffie-Hellman%20Key%20Exchange/Screenshots_for_demonstration/output_diffie_hellman_key_exchange.png?raw=true)
