@@ -10,5 +10,8 @@
  ## 7. Для зашифрования используют открытый ключ {e,n} : c = E(m) = m^e mod n.
  ## 8. Для расшифрования используют секретный ключ {d,n} получателя : m = D(c) = c^d mod n.
  ## Пример работы программы:
-![Пример работы программы]()
+![Пример работы программы](https://github.com/sv1atsk1/MaMoIPiIS/blob/main/RSAEncryptionExample/Screenshots_for_demonstration/output.png)
+
+ ## Однако то,что содержится в файле encrypted_message.txt:
+![encrypted_message.txt](https://github.com/sv1atsk1/MaMoIPiIS/blob/main/RSAEncryptionExample/Screenshots_for_demonstration/real_file_input.png)
 
